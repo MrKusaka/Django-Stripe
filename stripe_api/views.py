@@ -11,6 +11,13 @@ from .models import Item
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
+class HomeView(TemplateView):
+    template_name = "stripe_api/home.html"
+
+    def get_context_data(self, **kwargs):
+        return {'products': Item.objects.all()}
+
+
 class SuccessView(TemplateView):
     template_name = "stripe_api/success.html"
 
@@ -23,7 +30,8 @@ class ItemLandingPageView(TemplateView):
     template_name = "stripe_api/landing.html"
 
     def get_context_data(self, **kwargs):
-        item = Item.objects.get(name="Test Item")
+        item_id = self.kwargs["pk"]
+        item = Item.objects.get(id=item_id)
         context = super(ItemLandingPageView, self).get_context_data(**kwargs)
         context.update({
             "product": item,
@@ -61,12 +69,13 @@ class CreateCheckoutSessionView(View):
         })
 
 
-@csrf_exempt
-def stripe_webhook(request):
-  payload = request.body
 
-  # For now, you only need to print out the webhook payload so you can see
-  # the structure.
-  print(payload)
-
-  return HttpResponse(status=200)
+# @csrf_exempt
+# def stripe_webhook(request):
+#   payload = request.body
+#
+#   # For now, you only need to print out the webhook payload so you can see
+#   # the structure.
+#   print(payload)
+#
+#   return HttpResponse(status=200)

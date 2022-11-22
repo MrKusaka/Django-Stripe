@@ -1,0 +1,16 @@
+{% extends 'stripe_api/base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+    <div class="shadow-sm">
+        <h2>Выберите интересующий продукт!</h2><br>
+        {% for product in products %}
+            <a href="{% url 'item' product.id %}">{{ product }}</a><br>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
