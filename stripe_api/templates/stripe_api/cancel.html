@@ -4,6 +4,12 @@
     Cancel
 {% endblock %}
 
+{% block main %}
+    {{ block.super }}
+{% endblock %}
+
 {% block content %}
-    <h2>Cancelled!</h2>
+    <div class="text-center">
+        <h2>Something went wrong:( Go back to the main page and try again</h2>
+    </div>
 {% endblock %}

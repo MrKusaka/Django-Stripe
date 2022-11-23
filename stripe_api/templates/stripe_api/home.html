@@ -4,13 +4,30 @@
     Home
 {% endblock %}
 
-{% block content %}
-    <div class="shadow-sm">
-        <h2>Выберите интересующий продукт!</h2><br>
-        {% for product in products %}
-            <a href="{% url 'item' product.id %}">{{ product }}</a><br>
-        {% endfor %}
-        </div>
-    </div>
+{% block extrastyle %}
+    <style>
+        .homePage {
+            text-align: center;
+            font-size: 30px;
+            margin-top: 25px;
+            background: whitesmoke;
+            padding: 7px;
+        }
+    </style>
 {% endblock %}
 
+{% block main %}
+{% endblock %}
+
+{% block content %}
+    <div class="container shadow rounded homePage">
+        {% if products %}
+            <h2>Выберите интересующий продукт!</h2><br>
+            {% for product in products %}
+                <a href="{% url 'item' product.id %}">{{ product }}</a><br>
+            {% endfor %}
+        {% else %}
+            <h2>Продуктов нет:( Но не беда - создайте <a href="{% url 'admin:stripe_api_item_add' %}">здесь!</a></h2>
+        {% endif %}
+    </div>
+{% endblock %}

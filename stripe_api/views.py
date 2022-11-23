@@ -1,9 +1,8 @@
-from django.shortcuts import render
 import stripe
+
 from django.conf import settings
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.views.generic import TemplateView
-from django.views.decorators.csrf import csrf_exempt
 from django.views import View
 from .models import Item
 
@@ -67,15 +66,3 @@ class CreateCheckoutSessionView(View):
         return JsonResponse({
             'id': checkout_session.id
         })
-
-
-
-# @csrf_exempt
-# def stripe_webhook(request):
-#   payload = request.body
-#
-#   # For now, you only need to print out the webhook payload so you can see
-#   # the structure.
-#   print(payload)
-#
-#   return HttpResponse(status=200)
