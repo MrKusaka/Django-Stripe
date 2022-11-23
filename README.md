@@ -1,4 +1,5 @@
 # Тестовое задание Django + Stripe API бэкенд
+# Данное приложение позволяет производить оплату товара через платежную систему Stripe
 >Текст задания находится по [ссылке](https://github.com/MrKusaka/Django-Stripe/blob/master/Task.pdf)
 ### Копирование репозитория и установка зависимостей:
         git clone https://github.com/MrKusaka/djangoStripe
