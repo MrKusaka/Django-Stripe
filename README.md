@@ -12,9 +12,11 @@
 
         SECRET_KEY=<secret_key>
         DEBUG=<debug>
-        STRIPE_PUBLIC_KEY=<stripe_public_key>
-        STRIPE_SECRET_KEY=<stripe_secret_key>
-> Ключи STRIPE_PUBLIC_KEY и STRIPE_SECRET_KEY необходимо взять по [ссылке](https://dashboard.stripe.com/test/apikeys):
+> Ключи STRIPE_PUBLIC_KEY и STRIPE_SECRET_KEY необходимо взять по [ссылке](https://dashboard.stripe.com/test/apikeys) и добавить в settings:
+
+        STRIPE_PUBLIC_KEY = "your API key"
+        STRIPE_SECRET_KEY = "your API key"
+
 ### Применение миграций, создания суперпользователя и запуск проекта:
         python manage.py migrate
         python manage.py createsuperuser
